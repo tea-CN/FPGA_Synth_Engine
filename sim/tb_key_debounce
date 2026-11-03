@@ -1,0 +1,75 @@
+`timescale 1ns / 1ps
+
+module tb_key_debounce;
+
+reg         clk;
+reg         rst_n;
+wire [3:0]  col_scan;
+reg  [3:0]  row_read;
+wire [15:0] key_mask;
+
+// ??????
+key_debounce u_dut(
+    .clk(clk),
+    .rst_n(rst_n),
+    .col_scan(col_scan),
+    .row_read(row_read),
+    .key_mask(key_mask)
+);
+
+// 27MHz ??
+localparam CLK_PERIOD = 37;
+initial begin
+    clk = 1'b0;
+    forever #(CLK_PERIOD/2) clk = ~clk;
+end
+
+// ????
+initial begin
+    rst_n = 1'b0;
+    row_read = 4'b1111;
+    # 200;
+    rst_n = 1'b1;
+    $display("==== Reset done ====");
+
+    // ?? S1 (scan_sel=3, row0=0) ? key_mask[0] = 1
+    # 100000;
+    row_read = 4'b1110;
+    $display("Press S1");
+    # 150000;
+    row_read = 4'b1111;
+    $display("Release S1");
+
+    // ?? S16 (scan_sel=0, row3=0) ? key_mask[15] = 1
+    # 200000;
+    row_read = 4'b0111;
+    $display("Press S16");
+    # 150000;
+    row_read = 4'b1111;
+    $display("Release S16");
+
+    // ???? S1 + S16
+    # 200000;
+    row_read = 4'b0110;
+    $display("Press S1 + S16");
+    # 150000;
+    row_read = 4'b1111;
+    $display("Release all");
+
+    # 300000;
+    $display("==== Sim finish ====");
+    $finish;
+end
+
+// Gowin??????vcd???????
+initial begin
+    $dumpfile("wave.vcd");
+    $dumpvars(0, tb_key_debounce);
+end
+
+initial begin
+    $monitor("t=%0t ns | scan_sel=%b | col_scan=%b | row_read=%b | key_mask=%h",
+             $time, u_dut.scan_sel, col_scan, row_read, key_mask);
+end
+
+endmodule

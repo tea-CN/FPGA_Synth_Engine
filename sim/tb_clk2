@@ -1,0 +1,31 @@
+`timescale 1ns / 1ps
+module tb_clk2;
+reg clk_27m;
+reg rst_n;
+wire clk_44k1;
+
+clk2 u_clk2(
+    .clk_27m(clk_27m),
+    .rst_n(rst_n),
+    .clk_44k1(clk_44k1)
+);
+
+initial begin
+    clk_27m = 1'b0;
+    forever #18.5 clk_27m = ~clk_27m; // 27M ???37ns
+end
+
+initial begin
+    rst_n = 1'b0;
+    #200;
+    rst_n = 1'b1;
+    #2000000;
+    $finish;
+end
+
+initial begin
+    $dumpfile("wave_clk2.vcd");
+    $dumpvars(0,tb_clk2);
+end
+
+endmodule

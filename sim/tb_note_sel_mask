@@ -1,0 +1,36 @@
+`timescale 1ns / 1ps
+module tb_note_sel_mask;
+reg [6:0] key_mask;
+wire note_on0,note_on1,note_on2,note_on3,note_on4,note_on5,note_on6;
+
+note_sel_mask u_note_sel(
+    .key_mask(key_mask),
+    .note_on0(note_on0),
+    .note_on1(note_on1),
+    .note_on2(note_on2),
+    .note_on3(note_on3),
+    .note_on4(note_on4),
+    .note_on5(note_on5),
+    .note_on6(note_on6)
+);
+
+initial begin
+    key_mask = 7'd0;
+    #100;
+    key_mask = 7'b0000001; // ??note0
+    #200;
+    key_mask = 7'b0010101; // ??????????
+    #200;
+    key_mask = 7'b1111111; // ??
+    #200;
+    key_mask = 7'd0;
+    #200;
+    $finish;
+end
+
+initial begin
+    $dumpfile("wave_note_sel.vcd");
+    $dumpvars(0,tb_note_sel_mask);
+end
+
+endmodule

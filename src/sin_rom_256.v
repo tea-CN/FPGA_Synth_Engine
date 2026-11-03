@@ -1,0 +1,73 @@
+module sin_rom_256(
+    input  [7:0] addr,
+    output reg [15:0] dout
+);
+always @(*) begin
+    case(addr)
+        8'h00:dout=16'h8000;8'h01:dout=16'h8324;8'h02:dout=16'h8647;8'h03:dout=16'h8967;
+        8'h04:dout=16'h8c82;8'h05:dout=16'h8f96;8'h06:dout=16'h92a3;8'h07:dout=16'h95a5;
+        8'h08:dout=16'h989d;8'h09:dout=16'h9b8a;8'h0a:dout=16'h9e69;8'h0b:dout=16'ha13a;
+        8'h0c:dout=16'ha3fc;8'h0d:dout=16'ha6ae;8'h0e:dout=16'ha94f;8'h0f:dout=16'habde;
+        8'h10:dout=16'had5a;8'h11:dout=16'hafc2;8'h12:dout=16'hb214;8'h13:dout=16'hb450;
+        8'h14:dout=16'hb673;8'h15:dout=16'hb87f;8'h16:dout=16'hba70;8'h17:dout=16'hbc47;
+        8'h18:dout=16'hbe04;8'h19:dout=16'hbfb4;8'h1a:dout=16'hc148;8'h1b:dout=16'hc2cf;
+        8'h1c:dout=16'hc439;8'h1d:dout=16'hc584;8'h1e:dout=16'hc6b1;8'h1f:dout=16'hc7bf;
+        8'h20:dout=16'hc8ae;8'h21:dout=16'hc97d;8'h22:dout=16'hca2c;8'h23:dout=16'hcab9;
+        8'h24:dout=16'hcb25;8'h25:dout=16'hcb70;8'h26:dout=16'hcba7;8'h27:dout=16'hcbcb;
+        8'h28:dout=16'hcbcc;8'h29:dout=16'hcbaa;8'h2a:dout=16'hcb74;8'h2b:dout=16'hcb2b;
+        8'h2c:dout=16'hcac0;8'h2d:dout=16'hca42;8'h2e:dout=16'hc9a3;8'h2f:dout=16'hc8e3;
+        8'h30:dout=16'hc802;8'h31:dout=16'hc701;8'h32:dout=16'hc5e1;8'h33:dout=16'hc4a2;
+        8'h34:dout=16'hc345;8'h35:dout=16'hc1cc;8'h36:dout=16'hc037;8'h37:dout=16'hbe87;
+        8'h38:dout=16'hbcbc;8'h39:dout=16'hbade;8'h3a:dout=16'hb8ee;8'h3b:dout=16'hb6dd;
+        8'h3c:dout=16'hb4ac;8'h3d:dout=16'hb25c;8'h3e:dout=16'hafe0;8'h3f:dout=16'had69;
+        8'h40:dout=16'haad9;8'h41:dout=16'ha832;8'h42:dout=16'ha576;8'h43:dout=16'ha2a7;
+        8'h44:dout=16'h9fc7;8'h45:dout=16'h9ce7;8'h46:dout=16'h99fa;8'h47:dout=16'h9702;
+        8'h48:dout=16'h9401;8'h49:dout=16'h90f9;8'h4a:dout=16'h8ded;8'h4b:dout=16'h8ade;
+        8'h4c:dout=16'h87d0;8'h4d:dout=16'h84c3;8'h4e:dout=16'h81ba;8'h4f:dout=16'h7eb7;
+        8'h50:dout=16'h7bac;8'h51:dout=16'h78ad;8'h52:dout=16'h75ab;8'h53:dout=16'h72a9;
+        8'h54:dout=16'h6fa9;8'h55:dout=16'h6cad;8'h56:dout=16'h69b8;8'h57:dout=16'h66cb;
+        8'h58:dout=16'h63e9;8'h59:dout=16'h6113;8'h5a:dout=16'h5e4b;8'h5b:dout=16'h5b94;
+        8'h5c:dout=16'h58ef;8'h5d:dout=16'h565e;8'h5e:dout=16'h53e2;8'h5f:dout=16'h517e;
+        8'h60:dout=16'h4f32;8'h61:dout=16'h4d00;8'h62:dout=16'h4ada;8'h63:dout=16'h48ce;
+        8'h64:dout=16'h46e0;8'h65:dout=16'h4510;8'h66:dout=16'h435f;8'h67:dout=16'h41ce;
+        8'h68:dout=16'h405e;8'h69:dout=16'h3f10;8'h6a:dout=16'h3de3;8'h6b:dout=16'h3cda;
+        8'h6c:dout=16'h3bf4;8'h6d:dout=16'h3b33;8'h6e:dout=16'h3a96;8'h6f:dout=16'h3a1e;
+        8'h70:dout=16'h39cb;8'h71:dout=16'h399d;8'h72:dout=16'h3994;8'h73:dout=16'h39b0;
+        8'h74:dout=16'h39f1;8'h75:dout=16'ha55;8'h76:dout=16'h3a9b;8'h77:dout=16'h3b17;
+        8'h78:dout=16'h3bb6;8'h79:dout=16'h3c78;8'h7a:dout=16'h3d5c;8'h7b:dout=16'h3e63;
+        8'h7c:dout=16'h3f8b;8'h7d:dout=16'h40d4;8'h7e:dout=16'h423e;8'h7f:dout=16'h43c7;
+        8'h80:dout=16'h4570;8'h81:dout=16'h4736;8'h82:dout=16'h491a;8'h83:dout=16'h4b19;
+        8'h84:dout=16'h4d34;8'h85:dout=16'h4f68;8'h86:dout=16'h51b5;8'h87:dout=16'h5419;
+        8'h88:dout=16'h5684;8'h89:dout=16'h5903;8'h8a:dout=16'h5b85;8'h8b:dout=16'h5e18;
+        8'h8c:dout=16'h60ab;8'h8d:dout=16'h634c;8'h8e:dout=16'h65e9;8'h8f:dout=16'h6890;
+        8'h90:dout=16'h6b2f;8'h91:dout=16'h6dc4;8'h92:dout=16'h704e;8'h93:dout=16'h72ba;
+        8'h94:dout=16'h7517;8'h95:dout=16'h7753;8'h96:dout=16'h796d;8'h97:dout=16'h7b62;
+        8'h98:dout=16'h7d32;8'h99:dout=16'h7edb;8'h9a:dout=16'h805b;8'h9b:dout=16'h81b1;
+        8'h9c:dout=16'h82dd;8'h9d:dout=16'h83dc;8'h9e:dout=16'h84ae;8'h9f:dout=16'h8553;
+        8'ha0:dout=16'h85ba;8'ha1:dout=16'h85e2;8'ha2:dout=16'h85dd;8'ha3:dout=16'h85a9;
+        8'ha4:dout=16'h8537;8'ha5:dout=16'h8487;8'ha6:dout=16'h8399;8'ha7:dout=16'h827d;
+        8'ha8:dout=16'h8135;8'ha9:dout=16'h7fc0;8'haa:dout=16'h7e20;8'hab:dout=16'h7c55;
+        8'hac:dout=16'h7a60;8'had:dout=16'h7842;8'hae:dout=16'h75fe;8'haf:dout=16'h7394;
+        8'hb0:dout=16'h7107;8'hb1:dout=16'h6e47;8'hb2:dout=16'h6b67;8'hb3:dout=16'h6869;
+        8'hb4:dout=16'h6550;8'hb5:dout=16'h621d;8'hb6:dout=16'h5ed4;8'hb7:dout=16'h5b78;
+        8'hb8:dout=16'h58fb;8'hb9:dout=16'h5670;8'hba:dout=16'h53cb;8'hbb:dout=16'h511e;
+        8'hbc:dout=16'h4e5c;8'hbd:dout=16'h4b89;8'hbe:dout=16'h48a7;8'hbf:dout=16'h45ba;
+        8'hc0:dout=16'h42b6;8'hc1:dout=16'h3fac;8'hc2:dout=16'h3c9f;8'hc3:dout=16'h3993;
+        8'hc4:dout=16'h368a;8'hc5:dout=16'h3387;8'hc6:dout=16'h308d;8'hc7:dout=16'h2d9f;
+        8'hc8:dout=16'h2abf;8'hc9:dout=16'h27f1;8'hca:dout=16'h2536;8'hcb:dout=16'h2293;
+        8'hcc:dout=16'h2009;8'hcd:dout=16'h1d9b;8'hce:dout=16'h1b4c;8'hcf:dout=16'h191e;
+        8'hd0:dout=16'h1714;8'hd1:dout=16'h1530;8'hd2:dout=16'h1374;8'hd3:dout=16'h11e3;
+        8'hd4:dout=16'h107e;8'hd5:dout=16'h0f47;8'hd6:dout=16'h0e40;8'hd7:dout=16'h0d5b;
+        8'hd8:dout=16'h0c98;8'hd9:dout=16'h0bf9;8'hda:dout=16'h0b7e;8'hdb:dout=16'h0b2a;
+        8'hdc:dout=16'h0afe;8'hdd:dout=16'h0ae9;8'hde:dout=16'h0aec;8'hdf:dout=16'h0b08;
+        8'he0:dout=16'h0b3b;8'he1:dout=16'h0b85;8'he2:dout=16'h0be5;8'he3:dout=16'h0c5a;
+        8'he4:dout=16'h0ce3;8'he5:dout=16'h0d7f;8'he6:dout=16'h0e2d;8'he7:dout=16'h0eed;
+        8'he8:dout=16'h0fbd;8'he9:dout=16'h109d;8'hea:dout=16'h118b;8'heb:dout=16'h1286;
+        8'hec:dout=16'h138c;8'hed:dout=16'h149b;8'hee:dout=16'h15b1;8'hef:dout=16'h16cd;
+        8'hf0:dout=16'h17ec;8'hf1:dout=16'h190c;8'hf2:dout=16'h1a2c;8'hf3:dout=16'h1b4a;
+        8'hf4:dout=16'h1c63;8'hf5:dout=16'h1d76;8'hf6:dout=16'h1e81;8'hf7:dout=16'h1f82;
+        8'hf8:dout=16'h2078;8'hf9:dout=16'h2162;8'hfa:dout=16'h223e;8'hfb:dout=16'h230b;
+        8'hfc:dout=16'h23c8;8'hfd:dout=16'h2474;8'hfe:dout=16'h250d;8'hff:dout=16'h2592;
+    endcase
+end
+endmodule

@@ -1,0 +1,44 @@
+//主时钟 板载27M晶振，PIN4
+IO_LOC "clk" 4;
+IO_PORT "clk" IO_TYPE=LVCMOS33;
+
+// 矩阵行（输出，4行）
+IO_LOC "row[0]" 72;
+IO_PORT "row[0]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+
+IO_LOC "row[1]" 71;
+IO_PORT "row[1]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+
+IO_LOC "row[2]" 53;
+IO_PORT "row[2]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "row[3]" 52;
+IO_PORT "row[3]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+
+// 矩阵列（输入！！这里改成 PULL_MODE=UP）
+IO_LOC "col[0]" 28;
+IO_PORT "col[0]" IO_TYPE=LVCMOS33;
+IO_LOC "col[1]" 26;
+IO_PORT "col[1]" IO_TYPE=LVCMOS33; 
+IO_LOC "col[2]" 25;
+IO_PORT "col[2]" IO_TYPE=LVCMOS33; 
+IO_LOC "col[3]" 29;
+IO_PORT "col[3]" IO_TYPE=LVCMOS33; 
+
+
+
+//PCM5102 I2S输出
+IO_LOC "bclk" 56;
+IO_PORT "bclk" IO_TYPE=LVCMOS33;
+
+IO_LOC "lrck" 55;
+IO_PORT "lrck" IO_TYPE=LVCMOS33;
+
+IO_LOC "sdata" 54;
+IO_PORT "sdata" IO_TYPE=LVCMOS33;
+
+//LED
+IO_LOC "led" 15;
+IO_PORT "led" IO_TYPE=LVCMOS33;
+
+
+

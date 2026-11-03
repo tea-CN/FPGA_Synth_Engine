@@ -1,0 +1,51 @@
+`timescale 1ns / 1ps
+module tb_osc_adsr;
+reg clk;
+reg rst_n;
+reg sample_clk;
+reg note_on;
+reg [15:0] freq_step;
+wire signed [15:0] wav_out;
+
+osc_adsr u_osc(
+    .clk(clk),
+    .rst_n(rst_n),
+    .sample_clk(sample_clk),
+    .note_on(note_on),
+    .freq_step(freq_step),
+    .wav_out(wav_out)
+);
+
+// 27MHz???
+initial begin
+    clk = 1'b0;
+    forever #18.5 clk = ~clk;
+end
+
+// 44.1k ???????22.2us
+initial begin
+    sample_clk = 1'b0;
+    forever #11100 sample_clk = ~sample_clk;
+end
+
+initial begin
+    rst_n = 1'b0;
+    note_on = 1'b0;
+    freq_step = 16'h0800;
+    #200;
+    rst_n = 1'b1;
+
+    #100000;
+    note_on = 1'b1;   // ???????ADSR??
+    #800000;
+    note_on = 1'b0;   // ?????????
+    #800000;
+    $finish;
+end
+
+initial begin
+    $dumpfile("wave_adsr.vcd");
+    $dumpvars;
+end
+endmodule
+

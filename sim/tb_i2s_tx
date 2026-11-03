@@ -1,0 +1,57 @@
+`timescale 1ns / 1ps
+
+module tb_i2s_tx;
+
+reg               clk;
+reg               rst_n;
+reg               sample_clk;
+reg  signed [15:0] audio_in;
+wire              bclk;
+wire              lrck;
+wire              sdata;
+
+i2s_tx u_i2s_tx(
+    .clk(clk),
+    .rst_n(rst_n),
+    .sample_clk(sample_clk),
+    .audio_in(audio_in),
+    .bclk(bclk),
+    .lrck(lrck),
+    .sdata(sdata)
+);
+
+// 27MHz
+initial begin
+    clk = 1'b0;
+    forever #18.5185 clk = ~clk;
+end
+
+initial begin
+    sample_clk = 1'b0;
+    forever #10000 sample_clk = ~sample_clk;
+end
+
+initial begin
+    rst_n    = 1'b0;
+    audio_in = 16'd0;
+    #200;
+    rst_n    = 1'b1;
+
+    audio_in = 16'h7FFF;  // ??????
+    #80000;
+    audio_in = 16'h8000;  // ??????
+    #80000;
+    audio_in = 16'h4000;
+    #80000;
+    audio_in = 16'hC000;
+    #80000;
+
+    #100000;
+    $finish;
+end
+
+initial begin
+    $monitor("Time=%0t | lrck=%b bclk=%b sdata=%b audio_in=%h",$time,lrck,bclk,sdata,audio_in);
+end
+
+endmodule
